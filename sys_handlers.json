@@ -4,13 +4,13 @@
     "file_path": "handlers/add_handler.py",
     "func": "add_handler",
     "web_path": "/add",
-    "update_time": "2019-07-19 00:00:00"
+    "update_time": "2019-07-19 14:43:35"
   },
   "rm_handler": {
     "name": "rm_handler",
     "file_path": "handlers/rm_handler.py",
     "func": "rm_handler",
     "web_path": "/rm",
-    "update_time": "2019-07-19 00:00:00"
+    "update_time": "2019-07-19 14:43:35"
   }
 }

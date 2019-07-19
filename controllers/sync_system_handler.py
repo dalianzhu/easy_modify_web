@@ -44,6 +44,13 @@ class Sync(object):
                 # 说明redis中还没有这些东西
                 db_handler_list[name] = handler
                 db_change = True
+            else:
+                db_update_time = db_handler_list[name]["update_time"]
+                sys_update_time = system_handler_list[name]['update_time']
+                if sys_update_time > db_update_time:
+                    db_handler_list[name] = handler
+                    db_change = True
+
         if db_change:
             logging.debug("db is change")
             await redis_set("db_handler_list", 0, db_handler_list)
