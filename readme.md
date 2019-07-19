@@ -1,8 +1,8 @@
 ## 简介
-这个网站可以自己修改handlers，修改的数据放在了redis中。这样，就可以通过请求简单的增加删除handler了
+这个网站可以自己修改handlers，修改的数据放在了redis中。这样，就可以通过http请求简单的增加删除handler了
 
 ## 添加handler
-
+python:示例
 ```
 import json
 import requests
@@ -20,7 +20,7 @@ async def test_hello(request):
     return json(ret)
 """
 
-url = "{}/{}".format(host, "rm")
+url = "{}/{}".format(host, "add")
 data = {
     "name": "test_hello",
     "func": "test_hello",
@@ -56,5 +56,5 @@ print(ret.text)
 
 - 首先，在`/handlers`修改（新建）代码
 - 查看`sys_handlers.json`文件中，是否登记了这个handler，如果没有则手工按规定录入
-- 运行`python3 modify_sys_handlers.py`，更新`sys_handlers.json`中的update_time字段为当前时间
+- 运行`python3 update_sys_handlers.py`，更新`sys_handlers.json`中的update_time字段为当前时间
 - 重启程序 `python3 run.py`
