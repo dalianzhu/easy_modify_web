@@ -68,7 +68,6 @@ class Sync(object):
         },
         """
         while self._running:
-            await asyncio.sleep(1)
             logging.info("sync run")
             db_handler_list = await redis_get("db_handler_list")
             if not db_handler_list:
@@ -114,4 +113,5 @@ class Sync(object):
             for name in will_rm:
                 del system_handler_list[name]
 
+            await asyncio.sleep(1)
         self._is_close = True

@@ -24,18 +24,15 @@ async def add_handler(request):
     # c_add_handler(request.app, name, func, code, web_path)
 
     db_handler_list = await redis_get("db_handler_list")
-    if name not in db_handler_list:
-        handler_info = {
-            "name": name,
-            "file_path": "",
-            "func": func,
-            "web_path": web_path,
-            "code": code,
-            "update_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        }
-        db_handler_list[name] = handler_info
-    else:
-        db_handler_list[name]['code'] = code
+    handler_info = {
+        "name": name,
+        "file_path": "",
+        "func": func,
+        "web_path": web_path,
+        "code": code,
+        "update_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    db_handler_list[name] = handler_info
 
     await redis_set("db_handler_list", 0, db_handler_list)
 
