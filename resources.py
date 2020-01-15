@@ -5,7 +5,6 @@ import pickle
 import aiohttp
 import aiomysql
 import aioredis
-import boto3
 
 import srvconf
 
