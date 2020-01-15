@@ -5,8 +5,10 @@ from controllers.modify_handler import rm_handler as c_rm_handler
 import models.errors as error_codes
 from utils.http_helper import get_req_key
 from resources import redis_set, redis_get
+from controllers.wraps import admin_pwd
 
 # http://localhost:8000/rm?web_path=/dynamic_hello
+@admin_pwd()
 async def rm_handler(request):
     db_handler_list = await redis_get("db_handler_list")
 
@@ -22,7 +24,6 @@ async def rm_handler(request):
             return json(result)
 
     c_rm_handler(request.app, web_path)
-
 
     if name in db_handler_list:
         del db_handler_list[name]

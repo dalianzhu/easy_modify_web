@@ -8,18 +8,16 @@ from utils.http_helper import get_req_key
 from resources import redis_set, redis_get
 import datetime
 import srvconf
+from controllers.wraps import admin_pwd
 
 
+@admin_pwd()
 async def add_handler(request):
     # http://localhost:8000/add?name=dynamic_hello&func=dynamic_hello&code=xxx&web_path=xxx
     name = get_req_key(request, "name")
     func = get_req_key(request, "func")
     code = get_req_key(request, "code")
     web_path = get_req_key(request, "web_path")
-    if srvconf.admin_pwd:
-        admin_pwd = get_req_key(request, "admin_pwd", "")
-        if admin_pwd != srvconf.admin_pwd:
-            return json({"err": 1, "err_msg": "pwd is not correct"})
 
     # c_add_handler(request.app, name, func, code, web_path)
 
