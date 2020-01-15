@@ -17,7 +17,7 @@ async def add_handler(request):
     code = get_req_key(request, "code")
     web_path = get_req_key(request, "web_path")
     if srvconf.admin_pwd:
-        admin_pwd = get_req_key("admin_pwd", "")
+        admin_pwd = get_req_key(request, "admin_pwd", "")
         if admin_pwd != srvconf.admin_pwd:
             return json({"err": 1, "err_msg": "pwd is not correct"})
 
