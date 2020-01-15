@@ -113,5 +113,5 @@ class Sync(object):
             for name in will_rm:
                 del system_handler_list[name]
 
-            await asyncio.sleep(1)
+            await asyncio.sleep(15)
         self._is_close = True
