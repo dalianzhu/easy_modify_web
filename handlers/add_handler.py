@@ -11,7 +11,7 @@ import srvconf
 from controllers.wraps import admin_pwd
 
 
-@admin_pwd()
+@admin_pwd
 async def add_handler(request):
     # http://localhost:8000/add?name=dynamic_hello&func=dynamic_hello&code=xxx&web_path=xxx
     name = get_req_key(request, "name")

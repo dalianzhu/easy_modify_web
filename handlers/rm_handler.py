@@ -8,7 +8,7 @@ from resources import redis_set, redis_get
 from controllers.wraps import admin_pwd
 
 # http://localhost:8000/rm?web_path=/dynamic_hello
-@admin_pwd()
+@admin_pwd
 async def rm_handler(request):
     db_handler_list = await redis_get("db_handler_list")
 
