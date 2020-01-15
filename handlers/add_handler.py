@@ -7,6 +7,7 @@ from controllers.modify_handler import add_handler as c_add_handler
 from utils.http_helper import get_req_key
 from resources import redis_set, redis_get
 import datetime
+import srvconf
 
 
 async def add_handler(request):
@@ -15,6 +16,10 @@ async def add_handler(request):
     func = get_req_key(request, "func")
     code = get_req_key(request, "code")
     web_path = get_req_key(request, "web_path")
+    if srvconf.admin_pwd:
+        admin_pwd = get_req_key("admin_pwd", "")
+        if admin_pwd != srvconf.admin_pwd:
+            return json({"err": 1, "err_msg": "pwd is not correct"})
 
     # c_add_handler(request.app, name, func, code, web_path)
 

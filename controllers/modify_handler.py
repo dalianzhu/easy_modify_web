@@ -1,17 +1,22 @@
 import types
+import traceback
 import logging
 
 
 def add_handler(app, name, func, code, web_path):
-    md = types.ModuleType(name)
-    exec(code, md.__dict__)
+    try:
+        md = types.ModuleType(name)
+        exec(code, md.__dict__)
 
-    http_handler = getattr(md, func)
+        http_handler = getattr(md, func)
 
-    rm_handler(app, web_path)
-    logging.info("add_handler {}".format(web_path))
+        rm_handler(app, web_path)
+        logging.info("add_handler {}".format(web_path))
 
-    app.add_route(http_handler, web_path, methods={"GET", "POST"}, name=name)
+        app.add_route(http_handler, web_path, methods={
+                      "GET", "POST"}, name=name)
+    except:
+        logging.error(traceback.format_exc())
 
 
 def rm_handler(app, web_path):

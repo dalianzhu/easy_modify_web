@@ -69,6 +69,7 @@ class Sync(object):
         """
         while self._running:
             await asyncio.sleep(1)
+            logging.info("sync run")
             db_handler_list = await redis_get("db_handler_list")
             if not db_handler_list:
                 db_handler_list = {}

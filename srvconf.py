@@ -19,3 +19,4 @@ mysql_user = os.getenv("MYSQL_USER", "root")
 mysql_password = os.getenv("MYSQL_PWD", "123456")
 database = 'db'
 charset = "utf8"
+admin_pwd = os.getenv("EASYADMIN_PWD", "123456")
