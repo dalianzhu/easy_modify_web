@@ -8,7 +8,7 @@ set_logging.set_logging()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description='my severless,a very awesome project')
+        description='my server_less,a very awesome project')
     parser.add_argument('-p', action="store", default=srvconf.port,
                         help='input the port which site runs')
     parser.add_argument('-d', action="store", default=True,
