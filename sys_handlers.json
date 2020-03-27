@@ -1,16 +1,24 @@
 {
   "add_handler": {
-    "name": "add_handler",
+    "type": "system",
     "file_path": "handlers/add_handler.py",
-    "func": "add_handler",
     "web_path": "/add",
-    "update_time": "2019-07-19 14:43:35"
+    "last_update": "2019-07-19 14:43:35",
+    "code": ""
   },
   "rm_handler": {
-    "name": "rm_handler",
+    "type": "system",
     "file_path": "handlers/rm_handler.py",
     "func": "rm_handler",
     "web_path": "/rm",
-    "update_time": "2019-07-19 14:43:35"
+    "last_update": "2019-07-19 14:43:35",
+    "code": ""
+  },
+  "subscribe": {
+    "file_path": "",
+    "type": "user",
+    "web_path": "/subscribe",
+    "last_update": "2020-03-27 12:11:44",
+    "code": "\nimport logging\nfrom sanic.response import json\n\n\nasync def subscribe(request):\n    # {\n    #   \"data\": {} // \u63a8\u9001\u7684\u6570\u636e,\n    #   \"timestamp\": 1554190910,\n    #   \"sub_id\": 111, // \u8ba2\u9605ID\n    # }\n    # \u63a5\u53e3\u7684response\u5fc5\u987b\u6ee1\u8db3\uff1a\n    # - response:\n    # {\n    #   \"code\": 200, // 200\u4e3a\u6b63\u5e38\uff0c\u5176\u4f59\u503c\u4e3a\u4e0d\u6b63\u5e38\n    #   \"msg\": \"\" // \u4f20\u7ed9\u670d\u52a1\u5668\u7684\u4fe1\u606f\n    # }\n    return json({\n        \"code\": 200,  # 200\u4e3a\u6b63\u5e38\uff0c\u5176\u4f59\u503c\u4e3a\u4e0d\u6b63\u5e38\n        \"msg\": \"\"  # \u4f20\u7ed9\u670d\u52a1\u5668\u7684\u4fe1\u606f\n    })\n\n"
   }
 }

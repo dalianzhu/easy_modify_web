@@ -1,8 +1,14 @@
 import os
 import codecs
 import json
+import models.db
+from typing import Dict
 
-with codecs.open(os.getcwd() + "/sys_handlers.json") as f:
-    system_handler_list = json.loads(f.read())
+system_handler = {}
+
+
+def get_system_handler() -> Dict[str, models.db.FuncItem]:
+    return system_handler
+
 
 will_close = True
